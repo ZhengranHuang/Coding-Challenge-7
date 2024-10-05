@@ -59,6 +59,16 @@ for(let subordinate of department.subordinates){
 }
 return totalSalary;
 }
-const totalSalary = calculateDepartmentSalary(department);
+const totalSalary = calculateDepartmentSalary(company.departments[0]);
 console.log(`Total Salary $${totalSales}`);
+
 //Create a Function to Calculate the Total Salary for All Departments
+function calculateCompanySalary(company){
+let companySalary = 0;
+for (const department of company.departments){
+companySalary += calculateDepartmentSalary(department);
+}
+return companySalary;
+}
+const companySalary = calculateCompanySalary(company);
+console.log(`Company Salary $${companySalary}`);
