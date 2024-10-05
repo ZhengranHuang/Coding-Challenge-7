@@ -53,22 +53,12 @@ subordinates: []
 };
 //Task2:Create a Recursive Function to Calculate Total Salary for a Department
 function calculateDepartmentSalary(department){
-let totalSalary;
-let totalSalaryinsubordinates;
-let realtotalSalary;
-const departs = company.find(dn => dn.departmentName === department);
-if (departs.subordinates.length === 0 && departs){
-totalSalary += employee.salary;
-return console.log(`${department} total Salary "${totalSalary}"`)
-};
-if (departs.subordinates.length > 0 && departs){
-employee.subordinates.forEach(subordinate =>{totalSalaryinsubordinates+= subordinate.salary});
-totalSalary += employee.salary;
-realtotalSalary = totalSalaryinsubordinates + totalSalary;
-return console.log(`${department} total Salary "${realtotalSalary}"`)
+let totalSalary = department.salary;
+for(let subordinate of department.subordinates){
+    totalSalary += calculateDepartmentSalary(subordinate);
 }
-if(!departs){
-console.log(`${department} is Error.`)
+return totalSalary;
 }
-}
-calculateDepartmentSalary('Sales')
+const totalSalary = calculateDepartmentSalary(department);
+console.log(`Total Salary $${totalSales}`);
+//Create a Function to Calculate the Total Salary for All Departments
